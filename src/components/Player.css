@@ -1,0 +1,27 @@
+.player {
+    height: 100%;
+    display: flex; 
+    flex-flow: column;
+    justify-content: flex-start;
+}
+
+.player .dlContainer{
+    margin-top: 5px;
+    text-align: center;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.player .dl{
+    padding: 5px;
+    text-align: center;
+    margin: 4px;
+    border-radius: 3px;
+    border: none;
+    background-color: #fff;
+    box-shadow: 1px 1px 2px #4b535f24;
+    line-height: 20px;
+    white-space: nowrap;
+    min-width: 80px;
+    min-height: 35px;
+}

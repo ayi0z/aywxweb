@@ -1,0 +1,21 @@
+.qrcode-container {
+    height: 100%;
+    width: 100%;
+    background-color: #e0e1e2;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.qrcode-container .qrcode {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.qrcode-container .text {
+    text-align: center;
+    text-shadow: 1px 1px 1px #f5f3f3;
+    margin: 3px auto;
+}

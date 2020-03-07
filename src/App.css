@@ -1,0 +1,14 @@
+.App{
+    height: 100%;
+}
+
+.about p {
+  margin: 6px;
+}
+
+.dplayer-controller .dplayer-icons .dplayer-setting .dplayer-setting-box.dplayer-setting-box-open{
+  bottom: 0;
+}
+.dplayer.dplayer-mobile .dplayer-controller .dplayer-icons .dplayer-full .dplayer-full-in-icon{
+  display: none !important;
+}
