@@ -87,15 +87,24 @@ const Screen = props => {
             dots={true} >
             {
                 bannerList.map((b, i) => {
-                    return (
-                        <a key={i} href={b.href || '#'}
-                            style={{ display: 'inline-block', width: '100%', height: bannerHeight }}
-                        ><img src={b.src}
+
+                    if (!b.href || b.href.trim() === '#') {
+                        return (<img key={i} src={b.src}
                             alt={b.alt}
-                            style={{ width: '100%', verticalAlign: 'top' }}
-                            />
-                        </a>
-                    )
+                            style={{ display: 'inline-block', width: '100%', verticalAlign: 'top', height: bannerHeight }}
+                        />)
+                    } else {
+                        return (
+                            <a key={i} href={b.href || '#'}
+                                style={{ display: 'inline-block', width: '100%', height: bannerHeight }}
+                            ><img src={b.src}
+                                alt={b.alt}
+                                style={{ width: '100%', verticalAlign: 'top' }}
+                                />
+                            </a>
+                        )
+
+                    }
                 })
             }
         </Carousel>)

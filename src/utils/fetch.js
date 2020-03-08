@@ -1,6 +1,7 @@
 import { Toast } from 'antd-mobile'
+import api from './api'
 
-const API_DOMIN = 'http://api.ayioz.com'
+const API_DOMIN = api.API_DOMIN
 
 const CodeMap = {
     200: '成功',
@@ -30,7 +31,7 @@ const get = (url) => {
         Toast.fail(CodeMap[json.code])
     }).catch(error => {
         console.error(error);
-        Toast.offline('远程连接造反了。')
+        Toast.offline('远程连接失联了。')
     })
 }
 
