@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import './Intro.css'
 import api from '../utils/api'
 import Fetch from '../utils/fetch'
+
+
+const setImgSrc = node => {
+    node.target.src = `${api.Img_DOMIM}/aycms-black.png`
+    node.target.removeEventListener('error', setImgSrc)
+}
 
 const Intro = (props) => {
     const { videoid } = props
@@ -14,11 +20,18 @@ const Intro = (props) => {
             })
     }, [videoid])
 
+    const imgRef = useCallback(node => {
+        if (node) {
+            node.addEventListener('error', setImgSrc)
+        }
+    }, [])
+
     return (
         <div className="intro-container">
             <div className="base">
                 <div className="img">
-                    <img alt={video.name} src={video.pic} />
+                    <img ref={imgRef} alt={video.name} src={video.pic}
+                        style={{ background: `url(${api.Img_DOMIM}/aycms-gray.png) center center / 100% no-repeat` }} />
                 </div>
                 <div style={{ boxShadow: 'none' }}>
                     <h4>{video.name}</h4>

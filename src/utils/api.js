@@ -6,5 +6,6 @@ export default {
     banner: '/p/banner',
 
     danmaku: 'https://dplayer.moerats.com/',
-    API_DOMIN: 'http://api.ayioz.com'
+    API_DOMIN: 'http://api.ayioz.com',
+    Img_DOMIM: 'http://img.ayioz.com'
 }
