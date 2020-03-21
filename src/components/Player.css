@@ -6,7 +6,6 @@
 }
 
 .player .dlContainer{
-    margin-top: 5px;
     text-align: center;
     height: 100%;
     overflow-y: auto;
@@ -24,4 +23,9 @@
     white-space: nowrap;
     min-width: 80px;
     min-height: 35px;
+}
+
+.player .am-activity-indicator{
+    height: 100%;
+    justify-content: center;
 }

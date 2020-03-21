@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Tabs } from 'antd-mobile'
+import { Tabs, ActivityIndicator } from 'antd-mobile'
 import api from '../utils/api'
 import Fetch from '../utils/fetch'
 import './Player.css'
@@ -54,12 +54,15 @@ const Player = (props) => {
     useEffect(() => {
         if (currentCid && videoid) {
             Fetch.get(`${api.dl}/${videoid}/${currentCid}`)
-                .then(data => { setDlList(data) })
+                .then(data => {
+                    setDlList(data)
+                })
         }
     }, [videoid, currentCid])
 
     const onTabChange = (tab, index) => {
         setCurrentCid(tab.title.key)
+        setDlList([])
     }
 
     const onPlay = (dl) => setCurrentDl(dl)
@@ -72,7 +75,11 @@ const Player = (props) => {
                 playlist={dlList}
                 switchdl={onSwitchDl} />
             <Tabs tabs={tabs(collectList)} onChange={onTabChange}>
-                <Dl dllist={[...dlList].sort(() => (-1))} currentdl={currentDl} onPlay={onPlay} />
+                {
+                    (!dlList || !dlList.length) 
+                    ? (<ActivityIndicator size="large" />)
+                    : (<Dl dllist={[...dlList].sort(() => (-1))} currentdl={currentDl} onPlay={onPlay} />)
+                }
             </Tabs>
         </div>
     )
