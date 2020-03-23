@@ -4877,11 +4877,6 @@ hls.js@^0.13.2:
     eventemitter3 "3.1.0"
     url-toolkit "^2.1.6"
 
-hls@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/hls/-/hls-0.0.1.tgz#3433be0d4b1305db312c966527fbb156e7ed79ca"
-  integrity sha1-NDO+DUsTBdsxLJZlJ/uxVufteco=
-
 hmac-drbg@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"

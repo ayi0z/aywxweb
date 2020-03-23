@@ -60,7 +60,6 @@ const Screen = props => {
             dpp.on('waiting', () => {
                 dpp.notice('正在拼命加载, 请稍后...')
             })
-
             dpp.on('danmaku_send', () => {
                 document.activeElement.scrollIntoViewIfNeeded()
             })
