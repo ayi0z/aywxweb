@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Hls from 'hls.js'
 import 'dplayer/dist/DPlayer.min.css'
 import DPlayer from 'dplayer'
@@ -8,37 +8,24 @@ import { Carousel } from 'antd-mobile'
 
 const Screen = props => {
     const { currentdl, playlist, switchdl } = props
-    const [currentDl, setCurrentDl] = useState(currentdl)
     const [bannerList, setBannerList] = useState([])
-
     const bannerHeight = 180
 
+    const refHandler = useRef()
     useEffect(() => {
-        setCurrentDl(currentdl)
-    }, [currentdl])
-
-    useEffect(() => {
-        Fetch.get(api.banner)
-            .then(data => {
-                data = data.sort((a, b) => (a.sort - b.sort))
-                setBannerList(data)
-            })
-    }, [])
-
-    const refHandler = useCallback(el => {
-        if (el && currentDl) {
+        if (refHandler.current && currentdl) {
             const dpp = new DPlayer({
-                container: el,
-                autoplay: true,
+                container: refHandler.current,
                 theme: '#FADFA3',
                 lang: 'zh-cn',
+                autoplay: true,
                 screenshot: true,
                 hotkey: true,
                 preload: 'auto',
                 volume: 0.7,
                 mutex: true,
                 video: {
-                    url: currentDl.url,
+                    url: currentdl.url,
                     type: 'customHls',
                     pic: `${process.env.PUBLIC_URL}/screenbg.png`,
                     customType: {
@@ -50,7 +37,7 @@ const Screen = props => {
                     }
                 },
                 danmaku: {
-                    id: currentDl.id,
+                    id: currentdl.id,
                     api: api.danmaku || 'https://dplayer.moerats.com/',
                     maximum: 1000,
                     bottom: '15%',
@@ -65,21 +52,30 @@ const Screen = props => {
             })
             if (playlist) {
                 dpp.on('ended', () => {
-                    const currentIdx = playlist.findIndex(c => c.id === currentDl.id)
+                    const currentIdx = playlist.findIndex(c => c.id === currentdl.id)
                     const nextdl = playlist[currentIdx + 1]
                     if (nextdl) {
                         dpp.notice(`即将播放 ${nextdl.title}`)
-                        setCurrentDl(nextdl)
                         if (switchdl) switchdl(nextdl)
                     } else {
                         dpp.notice('播放结束')
                     }
                 })
             }
-        }
-    }, [currentDl.url])
 
-    if (!currentDl && !currentDl.url) {
+            return () => { dpp.destroy() }
+        }
+    }, [currentdl])
+
+    useEffect(() => {
+        Fetch.get(api.banner)
+            .then(data => {
+                data = data.sort((a, b) => (a.sort - b.sort))
+                setBannerList(data)
+            })
+    }, [])
+
+    if (!currentdl && !currentdl.url) {
         return (<Carousel
             autoplay={true}
             infinite={true}
