@@ -14,7 +14,7 @@ const tabs = (collectList) => {
                     flexFlow: 'column',
                     lineHeight: '18px',
                 }}>
-                <div style={{ fontSize: '12px' }}>线路 {index + 1}</div>
+                <div style={{ fontSize: '12px' }}>{c.name}</div>
                 <div style={{ whiteSpace: 'nowrap', fontSize: '12px' }}>{c.note}</div>
             </div>
         })
