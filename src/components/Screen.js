@@ -109,7 +109,7 @@ const Screen = props => {
         ref={refHandler}
         style={{
             width: '100%',
-            height: bannerHeight,
+            minHeight: bannerHeight,
         }}></div>)
 }
 
