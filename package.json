@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "antd-mobile": "^2.3.1",
     "dplayer": "^1.25.0",
     "hls.js": "^0.13.2",
@@ -15,7 +12,8 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build:dev": "dotenv -e .env.dev react-app-rewired build",
+    "build": "GENERATE_SOURCEMAP=false react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"
   },
@@ -35,8 +33,12 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
     "babel-plugin-import": "^1.13.0",
     "customize-cra": "^0.9.1",
+    "dotenv-cli": "^3.1.0",
     "react-app-rewired": "^2.1.5"
   }
 }

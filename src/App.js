@@ -25,11 +25,13 @@ const Main = (props) => {
   const [videoId, setVideoId] = useState(0)
 
   useEffect(() => {
-    Fetch.get(`${api.video}/${playcode}`)
-      .then(data => {
-        document.title = (data && data.name) || 'ymlshow'
-        setVideoId(data && data.id)
-      })
+    if (playcode) {
+      Fetch.get(`${api.video}/${playcode}`)
+        .then(data => {
+          document.title = (data && data.name) || 'ymlshow'
+          setVideoId(data && data.id)
+        })
+    }
   }, [playcode])
 
   if (videoId) {

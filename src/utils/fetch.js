@@ -1,8 +1,6 @@
 import { Toast } from 'antd-mobile'
 import api from './api'
 
-const API_DOMIN = api.API_DOMIN
-
 const CodeMap = {
     200: '成功',
     404: '未发现资源',
@@ -14,7 +12,7 @@ const get = (url) => {
         return
     }
     // Toast.loading('Loading....', 0)
-    return fetch(`${API_DOMIN}${url}`, {
+    return fetch(`${api.API_DOMIN}${url}`, {
         headers: {
             'content-type': 'application/json'
         },
