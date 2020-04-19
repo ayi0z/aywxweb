@@ -7,7 +7,7 @@ import Fetch from '../utils/fetch'
 import { Carousel } from 'antd-mobile'
 
 const Screen = props => {
-    const { currentdl, playlist, switchdl } = props
+    const { currentdl, playlist, switchdl, reportview } = props
     const [bannerList, setBannerList] = useState([])
     const bannerHeight = 180
 
@@ -49,6 +49,11 @@ const Screen = props => {
             })
             dpp.on('danmaku_send', () => {
                 document.activeElement.scrollIntoViewIfNeeded()
+            })
+            dpp.on('timeupdate', () => {
+                if (dpp.video.currentTime > 5 && dpp.video.currentTime < 6) {
+                    reportview(currentdl.vid, currentdl.cid)
+                }
             })
             if (playlist) {
                 dpp.on('ended', () => {

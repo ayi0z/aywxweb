@@ -33,4 +33,20 @@ const get = (url) => {
     })
 }
 
-export default { get, CodeMap }
+const put = (url) => {
+    if (!url) {
+        console.error('Lost fetch url')
+        return
+    }
+    return fetch(`${api.API_DOMIN}${url}`, {
+        headers: { 'content-type': 'application/json' },
+        mode: 'cors',
+        method: 'put'
+    }).then(res => {
+        if (res.ok) return res.json()
+    }).then(json => {
+        if (json.code === 200) return json.data
+    }).catch(error => console.error(error))
+}
+
+export default { get, put, CodeMap }

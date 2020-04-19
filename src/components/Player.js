@@ -40,6 +40,8 @@ const Player = (props) => {
     const [currentCid, setCurrentCid] = useState(0)
     const [dlList, setDlList] = useState([])
     const [currentDl, setCurrentDl] = useState(0)
+    const [reportViewerVid, setReportViewerVid] = useState(0)
+    const [reportViewerCid, setReportViewerCid] = useState(0)
 
     useEffect(() => {
         if (videoid) {
@@ -50,6 +52,17 @@ const Player = (props) => {
                 })
         }
     }, [videoid])
+
+    useEffect(() => {
+        if (reportViewerVid) {
+            Fetch.put(`${api.view_video}/${reportViewerVid}`)
+        }
+    }, [reportViewerVid])
+    useEffect(() => {
+        if (reportViewerCid) {
+            Fetch.put(`${api.view_videocollect}/${reportViewerVid}/${reportViewerCid}`)
+        }
+    }, [reportViewerCid])
 
     useEffect(() => {
         if (currentCid && videoid) {
@@ -69,16 +82,22 @@ const Player = (props) => {
 
     const onSwitchDl = dl => setCurrentDl(dl)
 
+    const onReportViewer = (vid, cid) => {
+        setReportViewerVid(vid)
+        setReportViewerCid(cid)
+    }
+
     return (
         <div className="player">
             <Screen currentdl={currentDl}
                 playlist={dlList}
-                switchdl={onSwitchDl} />
+                switchdl={onSwitchDl}
+                reportview={onReportViewer} />
             <Tabs tabs={tabs(collectList)} onChange={onTabChange}>
                 {
-                    (!dlList || !dlList.length) 
-                    ? (<ActivityIndicator size="large" />)
-                    : (<Dl dllist={[...dlList].sort(() => (-1))} currentdl={currentDl} onPlay={onPlay} />)
+                    (!dlList || !dlList.length)
+                        ? (<ActivityIndicator size="large" />)
+                        : (<Dl dllist={[...dlList].sort(() => (-1))} currentdl={currentDl} onPlay={onPlay} />)
                 }
             </Tabs>
         </div>

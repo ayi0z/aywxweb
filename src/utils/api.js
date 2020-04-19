@@ -16,5 +16,7 @@ export default {
     intro: '/p/intro',
     dl: '/p/dl',
     banner: '/p/banner',
+    view_video: '/p/view/v',
+    view_videocollect: '/p/view/vc',
     ...domain
 }
