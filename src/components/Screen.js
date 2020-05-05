@@ -36,13 +36,13 @@ const Screen = props => {
                         },
                     }
                 },
-                danmaku: {
-                    id: currentdl.id,
-                    api: api.danmaku || 'https://dplayer.moerats.com/',
-                    maximum: 1000,
-                    bottom: '15%',
-                    unlimited: true,
-                },
+                // danmaku: {
+                //     id: currentdl.id,
+                //     api: api.danmaku || 'https://dplayer.moerats.com/',
+                //     maximum: 1000,
+                //     bottom: '15%',
+                //     unlimited: true,
+                // },
             })
             dpp.on('waiting', () => {
                 dpp.notice('正在拼命加载, 请稍后...')

@@ -1,7 +1,7 @@
 const domain = process.env.REACT_APP_ENV === 'development'
     ? {
-        danmaku: 'https://dplayer.moerats.com/',
-        API_DOMIN: 'http://api.ayioz.co',
+        danmaku: 'http://dm.ayioz.com/',
+        API_DOMIN: 'http://api.ayioz.com',
         Img_DOMIM: 'http://img.ayioz.com'
     }
     : {
