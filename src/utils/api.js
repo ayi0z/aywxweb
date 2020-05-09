@@ -1,14 +1,8 @@
-const domain = process.env.REACT_APP_ENV === 'development'
-    ? {
-        danmaku: 'http://dm.ayioz.com/',
-        API_DOMIN: 'http://api.ayioz.com',
-        Img_DOMIM: 'http://img.ayioz.com'
-    }
-    : {
-        danmaku: 'https://dplayer.moerats.com/',
-        API_DOMIN: 'http://api.ayioz.com',
-        Img_DOMIM: 'http://img.ayioz.com'
-    }
+const domain = {
+    danmaku: process.env.REACT_APP_DANMU,
+    API_DOMIN: process.env.REACT_APP_API_DOMIN,
+    Img_DOMIM: process.env.REACT_APP_IMG_DOMIM
+}
 
 export default {
     video: '/p/video',
