@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "antd-mobile": "^2.3.1",
-    "dplayer": "^1.25.0",
+    "dplayer": "^1.25.1",
     "hls.js": "^0.13.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",

@@ -62,7 +62,7 @@ const Player = (props) => {
         if (reportViewerCid) {
             Fetch.put(`${api.view_videocollect}/${reportViewerVid}/${reportViewerCid}`)
         }
-    }, [reportViewerCid])
+    }, [reportViewerCid, reportViewerVid])
 
     useEffect(() => {
         if (currentCid && videoid) {

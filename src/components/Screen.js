@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Hls from 'hls.js'
-import 'dplayer/dist/DPlayer.min.css'
 import DPlayer from 'dplayer'
 import api from '../utils/api'
 import Fetch from '../utils/fetch'
